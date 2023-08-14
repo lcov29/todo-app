@@ -1,7 +1,5 @@
 const localStorageKeyName = 'taskList';
 
-localStorage.clear(); // TEMPORARY, DELETE LATER
-
 
 function readTaskListFromLocalStorage() {
    return JSON.parse(localStorage.getItem(localStorageKeyName));
@@ -43,13 +41,10 @@ function generateFrontendTaskContainer() {
 
 
 function generateFrontendTaskCheckbox(task) {
-
    const element = document.createElement('input');
 
    const handleChangeEvent = (e) => {
-      const internalTask = taskList.filter(
-         (element) => element.id === task.id
-      )[0];
+      const internalTask = taskList.filter((element) => element.id === task.id)[0];
       internalTask.done = e.target.checked;
    }
 
@@ -107,13 +102,30 @@ function generateFrontendTaskElement(task) {
 }
 
 
-function displayFrontendTaskList() {
-   const taskListContainer = document.getElementById('task-container');
+function clearFrontendTaskList() {
+   const taskContainer = document.getElementById('task-container');
+   taskContainer.remove();
+}
+
+
+function generateFrontendTaskContainer() {
+   const taskContainer = document.createElement('section');
+   taskContainer.setAttribute('id', 'task-container');
+
+   const taskListContainer = document.getElementById('task-list-container');
    const taskAddButton = document.getElementById('task-add-button');
+   taskListContainer.insertBefore(taskContainer, taskAddButton);
+   return taskContainer
+}
+
+
+function displayFrontendTaskList() {
+   clearFrontendTaskList();
+   const taskContainer = generateFrontendTaskContainer();
 
    taskList.forEach((task) => {
       const taskElement = generateFrontendTaskElement(task);
-      taskListContainer.insertBefore(taskElement, taskAddButton);
+      taskContainer.appendChild(taskElement);
    })
 }
 
@@ -121,6 +133,7 @@ function displayFrontendTaskList() {
 function addNewTask(submitEvent) {
    taskList.push(createTaskObject(submitEvent));
    saveTaskListToLocalStorage();
+   displayFrontendTaskList();
 }
 
 
@@ -131,11 +144,23 @@ function addClickHandlerToAddTaskButton() {
 }
 
 
-addClickHandlerToAddTaskButton();
+function addSubmitHandlerToDialogSaveButton() {
+   const addTaskDialog = document.getElementById('dialog-input');
+   addTaskDialog.addEventListener('submit', (e) => {
+      addNewTask(e);
+      addTaskDialog.reset();
+   });
+}
 
+
+/*
 let taskList = readTaskListFromLocalStorage() ?? [
    { id: 1, title: 'Task 1', description: 'Description', priority: 1, done: false },
    { id: 2, title: 'Task 2', description: 'Description', priority: 3, done: true },
 ];
+*/
+let taskList = readTaskListFromLocalStorage() ?? [];
 let nextUnassignedTaskId = calculateNextUnassignedTaskIdFromList();
+addClickHandlerToAddTaskButton();
+addSubmitHandlerToDialogSaveButton();
 displayFrontendTaskList();
