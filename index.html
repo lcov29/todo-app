@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <script src="./main.js" defer></script>
+    <title>ToDo App</title>
+</head>
+<body>
+    <main>
+    
+        <h2>ToDo List</h2>
+        <section id="task-list-container">
+            <section id="task-container">
+                <!--
+                <section class="task">
+                    <input type="checkbox" checked>
+                    <details>
+                        <summary>Complete the coding challenge</summary>
+                        This is the description for my coding challenge.
+                    </details>
+                    <button type="button">X</button>
+                </section>
+                -->
+                <button type="button" id="task-add-button">+</button>
+            </section>
+        </section>
+
+        <dialog>
+            <h2>Add Task</h2>
+            <form id="dialog-input" method="dialog">
+                <label for="dialog-input-priority">Priority</label>
+                <select name="priority" id="dialog-input-priority">
+                    <option value="1">High</option>
+                    <option value="2" selected>Medium</option>
+                    <option value="3">Low</option>
+                </select>
+                <label for="dialog-input-title">Title</label>
+                <input type="text" name="title" id="dialog-input-title" required>
+                <details>
+                    <summary>Optional description</summary>
+                    <textarea name="description" id="dialog-input-description" cols="30" rows="10"></textarea>
+                </details>
+                <button type="submit">Save</button>
+            </form>
+        </dialog>
+
+    </main>
+</body>
+</html>
