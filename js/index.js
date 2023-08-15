@@ -3,19 +3,15 @@ import { TaskList } from "./TaskList.js";
 
 const taskList = new TaskList();
 
-const addTaskButton = document.getElementById('task-add-button');
-const addTaskDialog = document.getElementById('add-task-dialog');
-const addTaskDialogForm = document.getElementById('task-dialog-form');
-const clearTaskDialog = document.getElementById('clear-task-dialog');
-const clearTaskListButton = document.getElementById('task-clear-button');
-const yesButton = document.getElementById('clear-control-button-yes');
-const noButton = document.getElementById('clear-control-button-no');
-
 
 // Add Event Listeners
 
-addTaskButton.addEventListener('click', () => addTaskDialog.showModal());
+const addTaskDialog = document.getElementById('add-task-dialog');
 
+document.getElementById('add-task-button').addEventListener('click', () => addTaskDialog.showModal());
+
+
+const addTaskDialogForm = document.getElementById('add-task-dialog-form');
 
 addTaskDialogForm.addEventListener('submit', (e) => {
    const priority = e.target[0].value;
@@ -26,17 +22,22 @@ addTaskDialogForm.addEventListener('submit', (e) => {
 });
 
 
-clearTaskListButton.addEventListener('click', () => {
-   if (taskList.hasTask) {
-      clearTaskDialog.showModal();
+const clearTaskListDialog = document.getElementById('clear-task-list-dialog');
+
+document.getElementById('clear-task-list-button').addEventListener('click', () => { 
+   if (taskList.hasTask) { 
+      clearTaskListDialog.showModal();
    }
 });
 
 
-yesButton.addEventListener('click', () => {
+document.getElementById('clear-task-list-yes-button').addEventListener('click', () => {
    taskList.clear();
-   clearTaskDialog.close();
+   clearTaskListDialog.close();
 });
 
 
-noButton.addEventListener('click', () => clearTaskDialog.close());
+document.getElementById('clear-task-list-no-button').addEventListener(
+   'click',
+   () => clearTaskListDialog.close()
+);
