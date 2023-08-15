@@ -39,10 +39,7 @@ function generateFrontendTaskDeleteButton(task, taskFrontendContainer) {
    element.textContent = 'X';
    
    element.addEventListener('click', () => {
-      taskList = taskList.filter((element) => {
-         console.log(`id1: ${element.id}, id2: ${task.id} => ${element.id !== task.id}`);
-         return element.id !== task.id
-      });
+      taskList = taskList.filter((element) => element.id !== task.id);
       saveTaskListToLocalStorage();
       taskFrontendContainer.remove();
    })
