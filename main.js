@@ -33,9 +33,31 @@ function createTaskObject(submitEvent) {
 }
 
 
-function generateFrontendTaskContainer() {
-   const element = document.createElement('section');
-   element.classList.add('task');
+function generateFrontendTaskDeleteButton(task, taskFrontendContainer) {
+   const element = document.createElement('button');
+   element.setAttribute('type', 'button');
+   element.textContent = 'X';
+   
+   element.addEventListener('click', () => {
+      taskList = taskList.filter((element) => {
+         console.log(`id1: ${element.id}, id2: ${task.id} => ${element.id !== task.id}`);
+         return element.id !== task.id
+      });
+      saveTaskListToLocalStorage();
+      taskFrontendContainer.remove();
+   })
+
+   return element;
+}
+
+
+function generateFrontendTaskDescription(task) {
+   const element = document.createElement('details');
+   element.textContent = task.description;
+
+   const summary = document.createElement('summary');
+   summary.textContent = task.title;
+   element.appendChild(summary);
    return element;
 }
 
@@ -59,81 +81,27 @@ function generateFrontendTaskCheckbox(task) {
 }
 
 
-function generateFrontendTaskDescription(task) {
-   const element = document.createElement('details');
-   element.textContent = task.description;
-
-   const summary = document.createElement('summary');
-   summary.textContent = task.title;
-   element.appendChild(summary);
-   
-   return element;
-}
-
-
-function generateFrontendTaskDeleteButton(task, taskFrontendContainer) {
-   const element = document.createElement('button');
-   element.setAttribute('type', 'button');
-   element.textContent = 'X';
-   
-   element.addEventListener('click', () => {
-      taskList = taskList.filter((element) => element.id !== task.id);
-      saveTaskListToLocalStorage();
-      taskFrontendContainer.remove();
-   })
-
-   return element;
-}
-
-
-function generateFrontendTaskElement() {
+function generateFrontendTaskContainer() {
    const element = document.createElement('section');
    element.classList.add('task');
    return element;
 }
 
 
-function generateFrontendTask(task) {
-   const taskContainer = generateFrontendTaskElement();
-
-   const checkbox = generateFrontendTaskCheckbox(task);
-   taskContainer.appendChild(checkbox);
-
-   const description = generateFrontendTaskDescription(task);
-   taskContainer.appendChild(description);
-
-   const deleteButton = generateFrontendTaskDeleteButton(task, taskContainer);
-   taskContainer.appendChild(deleteButton);
-
-   return taskContainer;
+function clearFrontendTaskListContainer() {
+   const container = document.getElementById('task-list-container');
+   container.remove();
 }
 
 
-function clearFrontendTaskList() {
-   const taskContainer = document.getElementById('task-container');
-   taskContainer.remove();
-}
-
-
-function generateFrontendTaskContainer() {
+function generateFrontendTaskListContainer() {
    const taskContainer = document.createElement('section');
-   taskContainer.setAttribute('id', 'task-container');
-
-   const taskListContainer = document.getElementById('task-list-container');
+   taskContainer.setAttribute('id', 'task-list-container');
+   
+   const insertionNode = document.querySelector('main > div');
    const taskAddButton = document.getElementById('task-add-button');
-   taskListContainer.insertBefore(taskContainer, taskAddButton);
-   return taskContainer
-}
-
-
-function displayFrontendTaskList() {
-   clearFrontendTaskList();
-   const taskContainer = generateFrontendTaskContainer();
-
-   taskList.forEach((task) => {
-      const taskElement = generateFrontendTask(task);
-      taskContainer.appendChild(taskElement);
-   })
+   insertionNode.insertBefore(taskContainer, taskAddButton);
+   return taskContainer;
 }
 
 
@@ -141,6 +109,15 @@ function addNewTask(submitEvent) {
    taskList.push(createTaskObject(submitEvent));
    saveTaskListToLocalStorage();
    displayFrontendTaskList();
+}
+
+
+function generateFrontendTask(task) {
+   const taskContainer = generateFrontendTaskContainer();
+   taskContainer.appendChild(generateFrontendTaskCheckbox(task));
+   taskContainer.appendChild(generateFrontendTaskDescription(task));
+   taskContainer.appendChild(generateFrontendTaskDeleteButton(task, taskContainer));
+   return taskContainer;
 }
 
 
@@ -157,6 +134,13 @@ function addSubmitHandlerToDialogSaveButton() {
       addNewTask(e);
       addTaskDialog.reset();
    });
+}
+
+
+function displayFrontendTaskList() {
+   clearFrontendTaskListContainer();
+   const taskListContainer = generateFrontendTaskListContainer();
+   taskList.forEach((task) => taskListContainer.appendChild(generateFrontendTask(task)));
 }
 
 
