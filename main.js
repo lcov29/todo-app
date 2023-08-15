@@ -140,7 +140,11 @@ function addClickHandlerToClearTaskDialogYesButton() {
 function addClickHandlerToClearTaskListButton() {
    const clearTaskListButton = document.getElementById('task-clear-button');
    const clearTaskDialog = document.getElementById('clear-task-dialog');
-   clearTaskListButton.addEventListener('click', () => clearTaskDialog.showModal());
+   clearTaskListButton.addEventListener('click', () => {
+      if (taskList.length > 0) {
+         clearTaskDialog.showModal();
+      }
+   });
 }
 
 
