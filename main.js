@@ -118,6 +118,16 @@ function generateFrontendTask(task) {
 }
 
 
+function addClickHandlerToClearTaskListButton() {
+   const clearTaskListButton = document.getElementById('task-clear-button');
+   clearTaskListButton.addEventListener('click', () => {
+      taskList = [];
+      saveTaskListToLocalStorage();
+      clearFrontendTaskListContainer();
+   });
+}
+
+
 function addClickHandlerToAddTaskButton() {
    const addTaskButton = document.getElementById('task-add-button');
    const addTaskDialog = document.querySelector('dialog');
@@ -143,6 +153,7 @@ function displayFrontendTaskList() {
 
 let taskList = readTaskListFromLocalStorage() ?? [];
 let nextUnassignedTaskId = calculateNextUnassignedTaskIdFromList();
+addClickHandlerToClearTaskListButton();
 addClickHandlerToAddTaskButton();
 addSubmitHandlerToDialogSaveButton();
 displayFrontendTaskList();
