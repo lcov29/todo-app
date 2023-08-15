@@ -118,19 +118,35 @@ function generateFrontendTask(task) {
 }
 
 
-function addClickHandlerToClearTaskListButton() {
-   const clearTaskListButton = document.getElementById('task-clear-button');
-   clearTaskListButton.addEventListener('click', () => {
+function addClickHandlerToClearTaskDialogNoButton() {
+   const clearTaskDialog = document.getElementById('clear-task-dialog');
+   const noButton = document.getElementById('clear-control-button-no');
+   noButton.addEventListener('click', () => clearTaskDialog.close());
+}
+
+
+function addClickHandlerToClearTaskDialogYesButton() {
+   const clearTaskDialog = document.getElementById('clear-task-dialog');
+   const yesButton = document.getElementById('clear-control-button-yes');
+   yesButton.addEventListener('click', () => {
       taskList = [];
       saveTaskListToLocalStorage();
-      clearFrontendTaskListContainer();
+      displayFrontendTaskList();
+      clearTaskDialog.close();
    });
+}
+
+
+function addClickHandlerToClearTaskListButton() {
+   const clearTaskListButton = document.getElementById('task-clear-button');
+   const clearTaskDialog = document.getElementById('clear-task-dialog');
+   clearTaskListButton.addEventListener('click', () => clearTaskDialog.showModal());
 }
 
 
 function addClickHandlerToAddTaskButton() {
    const addTaskButton = document.getElementById('task-add-button');
-   const addTaskDialog = document.querySelector('dialog');
+   const addTaskDialog = document.getElementById('add-task-dialog');
    addTaskButton.addEventListener('click', () => addTaskDialog.showModal());
 }
 
@@ -153,6 +169,8 @@ function displayFrontendTaskList() {
 
 let taskList = readTaskListFromLocalStorage() ?? [];
 let nextUnassignedTaskId = calculateNextUnassignedTaskIdFromList();
+addClickHandlerToClearTaskDialogNoButton();
+addClickHandlerToClearTaskDialogYesButton();
 addClickHandlerToClearTaskListButton();
 addClickHandlerToAddTaskButton();
 addSubmitHandlerToDialogSaveButton();

@@ -13,13 +13,21 @@
         <h2>ToDo List</h2>
         <div>
             <section id="task-list-container"></section>
-            <section id="task-list-control-container">
+            <section id="task-list-control-container" class="control-container">
                 <button type="button" id="task-clear-button">Clear</button>
                 <button type="button" id="task-add-button">Add</button>            
             </section>
         </div>
 
-        <dialog>
+        <dialog id="clear-task-dialog">
+            <p>Clear all tasks?</p>
+            <section class="control-container">
+                <button type="button" id="clear-control-button-no">No</button>
+                <button type="button" id="clear-control-button-yes">Yes</button>
+            </section>
+        </dialog>
+
+        <dialog id="add-task-dialog">
             <h2>Add Task</h2>
             <form id="dialog-input" method="dialog">
                 <label for="dialog-input-priority">Priority</label>
