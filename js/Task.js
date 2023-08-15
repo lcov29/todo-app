@@ -6,7 +6,6 @@ class Task {
    #title;
    #description;
    #done;
-   #taskHtmlContainer;
 
 
    constructor(props) {
@@ -16,7 +15,6 @@ class Task {
       this.#title = title;
       this.#description = description;
       this.#done = done;
-      this.#taskHtmlContainer = this.#generateHtmlContainer();
    }
 
 
@@ -90,10 +88,7 @@ class Task {
       const element = document.createElement('button');
       element.textContent = 'X';
       element.setAttribute('type', 'button');
-      element.addEventListener('click', () => {
-         this.#taskHtmlContainer.remove();
-         deleteFn(this.#id);
-      });
+      element.addEventListener('click', () => deleteFn(this.#id));
       return element;
    }
 

@@ -35,6 +35,7 @@ class TaskList {
    deleteTask(id) {
       this.#taskList = this.#taskList.filter((task) => task.id !== id);
       this.#localTaskStorage.save(this.#taskList);
+      this.#updateHtmlTaskList();
    }
 
 
