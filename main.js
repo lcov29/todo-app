@@ -14,7 +14,7 @@ function saveTaskListToLocalStorage() {
 function calculateNextUnassignedTaskIdFromList() {
    const assignedIdList = taskList.map((task) => task.id);
    assignedIdList.sort((id1, id2) => id2 - id1);
-   const maximumAssignedId = assignedIdList[0];
+   const maximumAssignedId = assignedIdList[0] ?? 0;
    return maximumAssignedId + 1;
 }
 
