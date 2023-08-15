@@ -1,57 +1,34 @@
+@import url(./taskList.css);
+
+
 * {
    box-sizing: border-box;
+   color: whitesmoke;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
    margin: 0;
    padding: 0;
 }
 
+
 body {
    align-items: center;
+   background-color: black;
    display: flex;
    justify-content: center;
    min-height: 100vh;
 }
 
+
 main {
-   background-color: red;
-   border: 2px solid black;
+   border: 2px solid white;
    border-radius: 1rem;
-   padding: 1rem;
-   min-width: 12%;
+   min-width: 20%;
+   padding: 2rem;
 }
+
 
 .control-container {
    display: flex;
    justify-content: space-between;
    margin-top: 2rem;
-}
-
-#task-list-control-container > button {
-   border: 1px solid black;
-   border-radius: .5rem;
-   font-weight: bold;
-   padding: .5rem;
-}
-
-.task {
-   align-items: center;
-   border: 1px solid black;
-   border-radius: .5rem;
-   display: grid;
-   gap: 1rem;
-   grid-template-columns: 1fr 5fr 1fr;
-   margin-bottom: 1rem;
-}
-
-/*
-.task > button,
-.task > input {
-   min-height: 2rem;
-}
-*/
-
-.task > button {
-   border: 1px solid black;
-   border-radius: .5rem;
-   min-height: 2rem;
 }

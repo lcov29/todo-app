@@ -1,0 +1,73 @@
+button,
+input[type="checkbox"] {
+   cursor: pointer;
+}
+
+
+#task-list-container {
+   max-height: 70vh;
+   margin-top: 1rem;
+   overflow-y: auto;
+}
+
+
+#task-list-control-container > button {
+   background-color: black;
+   border: 1px solid white;
+   border-radius: .5rem;
+   font-size: 1.1rem;
+   font-weight: bold;
+   margin-top: 2rem;
+   padding: .5rem;
+}
+
+
+#task-list-control-container > button:hover {
+   background-color: rgb(24, 22, 22);
+}
+
+
+.task {
+   align-items: center;
+   border: 1px solid white;
+   border-radius: .5rem;
+   display: grid;
+   gap: 1rem;
+   grid-template-columns: 1fr 5fr 1fr;
+   margin-top: 1rem;
+   padding: .5rem;
+}
+
+
+.task > button {
+   background-color: black;
+   background-image: url('../icons/delete.svg');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: contain;
+   border: none;
+   min-height: 2rem;
+   opacity: 0;
+}
+
+
+.task > button:hover,
+.task > button:focus {
+   opacity: 1;
+}
+
+
+.task > input {
+   min-height: 2rem;
+}
+
+
+.task > p {
+   font-weight: bold;
+}
+
+
+.task summary {
+   font-weight: bold;
+   margin-bottom: .2rem;
+}
