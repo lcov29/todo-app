@@ -49,12 +49,18 @@ function generateFrontendTaskDeleteButton(task, taskFrontendContainer) {
 
 
 function generateFrontendTaskDescription(task) {
-   const element = document.createElement('details');
-   element.textContent = task.description;
+   if (task.description !== '') {
+      const element = document.createElement('details');
+      element.textContent = task.description;
+   
+      const summary = document.createElement('summary');
+      summary.textContent = task.title;
+      element.appendChild(summary);
+      return element;
+   }
 
-   const summary = document.createElement('summary');
-   summary.textContent = task.title;
-   element.appendChild(summary);
+   const element = document.createElement('p');
+   element.textContent = task.title;
    return element;
 }
 
