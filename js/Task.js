@@ -86,7 +86,6 @@ class Task {
 
    #generateHtmlTaskDeleteButton(deleteFn) {
       const element = document.createElement('button');
-      element.textContent = 'X';
       element.setAttribute('type', 'button');
       element.addEventListener('click', () => deleteFn(this.#id));
       return element;
