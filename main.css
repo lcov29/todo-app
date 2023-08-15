@@ -1,0 +1,35 @@
+* {
+   box-sizing: border-box;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   margin: 0;
+   padding: 0;
+}
+
+body {
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   min-height: 100vh;
+}
+
+main {
+   background-color: red;
+   border: 2px solid black;
+   border-radius: 1rem;
+   padding: 1rem;
+}
+
+.task {
+   align-items: center;
+   border: 1px solid black;
+   display: grid;
+   grid-template-columns: 2fr 5fr 2fr;
+   gap: 1rem;
+   margin-bottom: 1rem;
+}
+
+.task > button,
+.task > input {
+   min-height: 2rem;
+   width: 100%;
+}
