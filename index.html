@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
-    <script src="./js/main.js" defer></script>
+    <script type="module" src="./js/index.js" defer></script>
     <title>ToDo App</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
 
         <dialog id="add-task-dialog">
             <h2>Add Task</h2>
-            <form id="dialog-input" method="dialog">
+            <form id="task-dialog-form" method="dialog">
                 <label for="dialog-input-priority">Priority</label>
                 <select name="priority" id="dialog-input-priority">
                     <option value="1">High</option>
