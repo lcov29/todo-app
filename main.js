@@ -96,8 +96,8 @@ function generateFrontendTaskListContainer() {
    taskContainer.setAttribute('id', 'task-list-container');
    
    const insertionNode = document.querySelector('main > div');
-   const taskAddButton = document.getElementById('task-add-button');
-   insertionNode.insertBefore(taskContainer, taskAddButton);
+   const taskListControl = document.getElementById('task-list-control-container');
+   insertionNode.insertBefore(taskContainer, taskListControl);
    return taskContainer;
 }
 
