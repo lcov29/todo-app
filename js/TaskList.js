@@ -7,7 +7,7 @@ class TaskList {
 
    #taskList = [];
    #localTaskStorage = new LocalTaskStorage();
-   #nextUnassignedTaskId = -1;
+   #nextUnassignedTaskId = 1;
    #taskListHtmlContainer = null;
 
 
@@ -36,6 +36,7 @@ class TaskList {
       this.#taskList = this.#taskList.filter((task) => task.id !== id);
       this.#localTaskStorage.save(this.#taskList);
       this.#updateHtmlTaskList();
+      this.#resetNextUnassignedTaskId();
    }
 
 
@@ -43,7 +44,7 @@ class TaskList {
       this.#taskList = [];
       this.#localTaskStorage.save(this.#taskList);
       this.#clearHtmlTaskList();
-      this.#nextUnassignedTaskId = 1;
+      this.#resetNextUnassignedTaskId();
    }
 
 
@@ -52,6 +53,13 @@ class TaskList {
       assignedIdList.sort((id1, id2) => id2 - id1);
       const maximumAssignedId = assignedIdList[0] ?? 0;
       return maximumAssignedId + 1;
+   }
+
+
+   #resetNextUnassignedTaskId() {
+      if (!this.hasTask) {
+         this.#nextUnassignedTaskId = 1;
+      }
    }
 
 
