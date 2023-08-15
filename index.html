@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="shortcut icon" href="./icons/favicon.svg" type="image/svg+xml">
     <script type="module" src="./js/index.js" defer></script>
-    <title>ToDo App</title>
+    <title>TODO App</title>
 </head>
 <body>
     <main>
     
-        <h2>ToDo List</h2>
+        <h2>My Tasks</h2>
         <div>
             <section id="task-list-container"></section>
             <section id="task-list-control-container" class="control-container">
@@ -31,19 +31,23 @@
         <dialog id="add-task-dialog">
             <h2>Add Task</h2>
             <form id="add-task-dialog-form" method="dialog">
-                <label for="add-task-dialog-form-input-priority">Priority</label>
-                <select name="priority" id="add-task-dialog-form-input-priority">
-                    <option value="1">High</option>
-                    <option value="2" selected>Medium</option>
-                    <option value="3">Low</option>
-                </select>
-                <label for="add-task-dialog-form-input-title">Title</label>
-                <input type="text" name="title" id="add-task-dialog-form-input-title" required>
+                <div>
+                    <label for="add-task-dialog-form-input-priority">Priority</label>
+                    <select name="priority" id="add-task-dialog-form-input-priority">
+                        <option value="1">High</option>
+                        <option value="2" selected>Medium</option>
+                        <option value="3">Low</option>
+                    </select>
+                    <label for="add-task-dialog-form-input-title">Title</label>
+                    <input type="text" name="title" id="add-task-dialog-form-input-title" required>
+                </div>
                 <details>
                     <summary>Optional description</summary>
                     <textarea name="description" id="add-task-dialog-form-input-description" cols="30" rows="10"></textarea>
                 </details>
-                <button type="submit">Save</button>
+                <div id="add-task-dialog-save-button-container">
+                    <button type="submit">Save</button>
+                </div>
             </form>
         </dialog>
 
