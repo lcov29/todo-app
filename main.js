@@ -86,8 +86,15 @@ function generateFrontendTaskDeleteButton(task, taskFrontendContainer) {
 }
 
 
-function generateFrontendTaskElement(task) {
-   const taskContainer = generateFrontendTaskContainer();
+function generateFrontendTaskElement() {
+   const element = document.createElement('section');
+   element.classList.add('task');
+   return element;
+}
+
+
+function generateFrontendTask(task) {
+   const taskContainer = generateFrontendTaskElement();
 
    const checkbox = generateFrontendTaskCheckbox(task);
    taskContainer.appendChild(checkbox);
@@ -124,7 +131,7 @@ function displayFrontendTaskList() {
    const taskContainer = generateFrontendTaskContainer();
 
    taskList.forEach((task) => {
-      const taskElement = generateFrontendTaskElement(task);
+      const taskElement = generateFrontendTask(task);
       taskContainer.appendChild(taskElement);
    })
 }
@@ -153,12 +160,6 @@ function addSubmitHandlerToDialogSaveButton() {
 }
 
 
-/*
-let taskList = readTaskListFromLocalStorage() ?? [
-   { id: 1, title: 'Task 1', description: 'Description', priority: 1, done: false },
-   { id: 2, title: 'Task 2', description: 'Description', priority: 3, done: true },
-];
-*/
 let taskList = readTaskListFromLocalStorage() ?? [];
 let nextUnassignedTaskId = calculateNextUnassignedTaskIdFromList();
 addClickHandlerToAddTaskButton();
