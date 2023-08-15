@@ -19,17 +19,29 @@ main {
    padding: 1rem;
 }
 
+#task-list-control-container {
+   display: flex;
+   justify-content: space-between;
+   margin-top: 2rem;
+}
+
+#task-list-control-container > button {
+   border: 1px solid black;
+   border-radius: .5rem;
+   font-weight: bold;
+   padding: .5rem;
+}
+
 .task {
    align-items: center;
    border: 1px solid black;
    display: grid;
-   grid-template-columns: 2fr 5fr 2fr;
    gap: 1rem;
+   grid-template-columns: 1fr 5fr 1fr;
    margin-bottom: 1rem;
 }
 
 .task > button,
 .task > input {
    min-height: 2rem;
-   width: 100%;
 }
