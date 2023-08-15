@@ -17,9 +17,10 @@ main {
    border: 2px solid black;
    border-radius: 1rem;
    padding: 1rem;
+   min-width: 12%;
 }
 
-#task-list-control-container {
+.control-container {
    display: flex;
    justify-content: space-between;
    margin-top: 2rem;
@@ -35,13 +36,22 @@ main {
 .task {
    align-items: center;
    border: 1px solid black;
+   border-radius: .5rem;
    display: grid;
    gap: 1rem;
    grid-template-columns: 1fr 5fr 1fr;
    margin-bottom: 1rem;
 }
 
+/*
 .task > button,
 .task > input {
+   min-height: 2rem;
+}
+*/
+
+.task > button {
+   border: 1px solid black;
+   border-radius: .5rem;
    min-height: 2rem;
 }
