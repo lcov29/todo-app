@@ -7,6 +7,39 @@ dialog {
 }
 
 
+dialog input,
+dialog select,
+dialog option,
+dialog textarea {
+   color: black;
+   font-size: 1.2rem;
+   min-height: 2rem;
+   padding: .25rem;
+}
+
+
+dialog button {
+   background: none;
+   border: 2px solid white;
+   border-radius: .5rem;
+   font-size: 1.3rem;
+   font-weight: bold;
+   min-width: 25%;
+   padding: .5rem;
+}
+
+
+dialog button:hover,
+dialog button:focus {
+   background-color: black;
+}
+
+
+dialog summary {
+   margin-bottom: 1rem;
+}
+
+
 dialog > form {
    margin-top: 2rem;
 }
@@ -21,35 +54,8 @@ dialog > form > div:first-of-type {
 }
 
 
-dialog input,
-dialog select,
-dialog option,
-dialog textarea {
-   color: black;
-   font-size: 1.2rem;
-   min-height: 2rem;
-   padding: .25rem;
-}
-
-
-dialog summary {
-   margin-bottom: 1rem;
-}
-
-
 #add-task-dialog-save-button-container {
    display: flex;
    justify-content: end;
    margin-top: 2rem;
-}
-
-
-#add-task-dialog-save-button-container > button {
-   background: none;
-   border: 2px solid white;
-   border-radius: .5rem;
-   font-size: 1.3rem;
-   font-weight: bold;
-   min-width: 25%;
-   padding: .5rem;
 }
