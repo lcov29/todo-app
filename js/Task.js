@@ -23,6 +23,16 @@ class Task {
    }
 
 
+   get priority() {
+      return this.#priority;
+   }
+
+
+   get done() {
+      return this.#done;
+   }
+
+
    get json() {
       return {
          id: this.#id,
