@@ -64,6 +64,7 @@ class TaskList {
 
 
    #updateHtmlTaskList() {
+      this.#sortTaskList();
       this.#clearHtmlTaskList();
 
       const deleteFn = (id) => this.deleteTask(id);
@@ -76,6 +77,28 @@ class TaskList {
          const taskHtmlElement = task.generateHtml(saveFn, deleteFn);
          this.#taskListHtmlContainer.appendChild(taskHtmlElement);
       }
+   }
+
+
+   #sortTaskList() {
+      this.#sortDoneTasksToEndOfList();
+      this.#sortDoneTasksByPriority();
+      this.#sortPendingTasksByPriority();
+   }
+
+
+   #sortDoneTasksToEndOfList() {
+      this.#taskList.sort((task1, task2) => (task1.done) ? 1 : -1);
+   }
+
+
+   #sortDoneTasksByPriority() {
+      this.#taskList.sort((task1, task2) => (!task1.done && !task2.done) ? 0 : task1.priority - task2.priority);
+   }
+
+
+   #sortPendingTasksByPriority() {
+      this.#taskList.sort((task1, task2) => (task1.done || task2.done) ? 0 : task1.priority - task2.priority);
    }
 
 
