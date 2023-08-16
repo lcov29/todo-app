@@ -88,6 +88,7 @@ class Task {
       const element = document.createElement('button');
       element.setAttribute('type', 'button');
       element.addEventListener('click', () => deleteFn(this.#id));
+      element.classList.add(`task-priority-${this.#priority}`);
       return element;
    }
 
