@@ -2,8 +2,8 @@ dialog {
    background-color: rgb(24, 24, 24);
    border: 2px solid white;
    border-radius: .5rem;
-   padding: 1rem;
    margin: auto;
+   padding: 1rem;
 }
 
 
@@ -13,26 +13,29 @@ dialog > form {
 
 
 dialog > form > div:first-of-type {
-   display: grid;
-   grid-template-columns: 1fr 5fr;
-   gap: 1rem;
    align-items: center;
+   display: grid;
+   gap: 1rem;
+   grid-template-columns: 1fr 5fr;
    margin-bottom: 1rem;
 }
+
 
 dialog input,
 dialog select,
 dialog option,
 dialog textarea {
-   min-height: 2rem;
-   font-size: 1.2rem;
    color: black;
+   font-size: 1.2rem;
+   min-height: 2rem;
    padding: .25rem;
 }
+
 
 dialog summary {
    margin-bottom: 1rem;
 }
+
 
 #add-task-dialog-save-button-container {
    display: flex;
@@ -42,11 +45,11 @@ dialog summary {
 
 
 #add-task-dialog-save-button-container > button {
-   min-width: 25%;
    background: none;
    border: 2px solid white;
-   padding: .5rem;
+   border-radius: .5rem;
    font-size: 1.3rem;
    font-weight: bold;
-   border-radius: .5rem;
+   min-width: 25%;
+   padding: .5rem;
 }
