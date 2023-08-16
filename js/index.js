@@ -7,11 +7,14 @@ const taskList = new TaskList();
 // Add Event Listeners
 
 const addTaskDialog = document.getElementById('add-task-dialog');
+const addTaskDialogForm = document.getElementById('add-task-dialog-form');
+const clearTaskListDialog = document.getElementById('clear-task-list-dialog');
 
 document.getElementById('add-task-button').addEventListener('click', () => addTaskDialog.showModal());
 
-
-const addTaskDialogForm = document.getElementById('add-task-dialog-form');
+addTaskDialog.addEventListener('cancel', (e) => {
+   addTaskDialogForm.reset();
+})
 
 addTaskDialogForm.addEventListener('submit', (e) => {
    const priority = e.target[0].value;
@@ -21,8 +24,6 @@ addTaskDialogForm.addEventListener('submit', (e) => {
    addTaskDialogForm.reset();
 });
 
-
-const clearTaskListDialog = document.getElementById('clear-task-list-dialog');
 
 document.getElementById('clear-task-list-button').addEventListener('click', () => { 
    if (taskList.hasTask) { 
