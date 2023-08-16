@@ -81,24 +81,21 @@ class TaskList {
 
 
    #sortTaskList() {
-      this.#sortDoneTasksToEndOfList();
-      this.#sortDoneTasksByPriority();
-      this.#sortPendingTasksByPriority();
+      const sortedPendingTaskList = this.#getPendingTaskListSortedByDescendingPriority();
+      const sortedDoneTaskList = this.#getDoneTaskListSortedByDescendingPriority();
+      this.#taskList = sortedPendingTaskList.concat(sortedDoneTaskList);
    }
 
 
-   #sortDoneTasksToEndOfList() {
-      this.#taskList.sort((task1, task2) => (task1.done) ? 1 : -1);
+   #getPendingTaskListSortedByDescendingPriority() {
+      const pendingTaskList = this.#taskList.filter((task) => !task.done);
+      return pendingTaskList.sort((task1, task2) => task1.priority - task2.priority);
    }
 
 
-   #sortDoneTasksByPriority() {
-      this.#taskList.sort((task1, task2) => (!task1.done && !task2.done) ? 0 : task1.priority - task2.priority);
-   }
-
-
-   #sortPendingTasksByPriority() {
-      this.#taskList.sort((task1, task2) => (task1.done || task2.done) ? 0 : task1.priority - task2.priority);
+   #getDoneTaskListSortedByDescendingPriority() {
+      const doneTaskList = this.#taskList.filter((task) => task.done);
+      return doneTaskList.sort((task1, task2) => task1.priority - task2.priority);
    }
 
 
