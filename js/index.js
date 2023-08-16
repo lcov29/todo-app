@@ -22,6 +22,7 @@ const clearTaskListNoButton = document.getElementById('clear-task-list-no-button
 
 
 addTaskButton.addEventListener('click', () => addTaskDialog.showModal());
+
 addTaskDialog.addEventListener('cancel', (e) => { 
    addTaskDialogForm.reset();
    collapseDialogDetailElement();
