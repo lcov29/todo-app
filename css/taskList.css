@@ -11,9 +11,9 @@ input[type="checkbox"] {
 }
 
 
-#task-list-control-container > button {
-   background-color: black;
-   border: 1px solid white;
+#task-list-control-container>button {
+   background: none;
+   border: 1px solid var(--border-color);
    border-radius: .5rem;
    font-size: 1.1rem;
    font-weight: bold;
@@ -22,14 +22,15 @@ input[type="checkbox"] {
 }
 
 
-#task-list-control-container > button:hover {
-   background-color: rgb(24, 22, 22);
+#task-list-control-container>button:hover {
+   background-color: var(--dialog-background-color);
 }
 
 
 .task {
    align-items: center;
-   border: 1px solid white;
+   background-color: var(--task-background-color);
+   border: 1px solid var(--border-color);
    border-radius: .5rem;
    display: grid;
    gap: 1rem;
@@ -40,29 +41,30 @@ input[type="checkbox"] {
 
 
 .task > button {
-   background-color: black;
-   background-image: url('../icons/delete.svg');
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: contain;
+   background-color: rgb(4, 117, 4);
+   border-radius: 50%;
    border: none;
-   min-height: 2rem;
-   opacity: 0;
+   height: 2rem;
+   width: 2rem;
 }
 
 
 .task > button:hover,
 .task > button:focus {
-   opacity: 1;
+   background-color: var(--task-background-color);
+   background-image: url('../icons/delete.svg');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: contain;
 }
 
 
-.task > input {
+.task>input {
    min-height: 2rem;
 }
 
 
-.task > p {
+.task>p {
    font-weight: bold;
 }
 
