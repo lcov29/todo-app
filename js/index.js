@@ -4,6 +4,12 @@ import { TaskList } from "./TaskList.js";
 const taskList = new TaskList();
 
 
+function collapseDialogDetailElement() {
+   const dialogDetailElement = document.querySelector('#add-task-dialog-form > details');
+   dialogDetailElement.removeAttribute('open');
+}
+
+
 // Add Event Listeners
 
 const addTaskButton = document.getElementById('add-task-button');
@@ -16,7 +22,10 @@ const clearTaskListNoButton = document.getElementById('clear-task-list-no-button
 
 
 addTaskButton.addEventListener('click', () => addTaskDialog.showModal());
-addTaskDialog.addEventListener('cancel', (e) => { addTaskDialogForm.reset();})
+addTaskDialog.addEventListener('cancel', (e) => { 
+   addTaskDialogForm.reset();
+   collapseDialogDetailElement();
+});
 
 addTaskDialogForm.addEventListener('submit', (e) => {
    const priority = e.target[0].value;
@@ -24,6 +33,7 @@ addTaskDialogForm.addEventListener('submit', (e) => {
    const description = e.target[2].value;
    taskList.addNewTask(title, description, priority);
    addTaskDialogForm.reset();
+   collapseDialogDetailElement();
 });
 
 clearTaskListButton.addEventListener('click', () => { 
