@@ -46,6 +46,9 @@ class Task {
    #generateHtmlContainer() {
       const element = document.createElement('section');
       element.classList.add('task');
+      if (this.#done) {
+         element.classList.add('task-done');
+      }
       return element;
    }
 

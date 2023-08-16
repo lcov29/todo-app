@@ -66,8 +66,11 @@ class TaskList {
    #updateHtmlTaskList() {
       this.#clearHtmlTaskList();
 
-      const saveFn = () => this.#localTaskStorage.save(this.#taskList);
       const deleteFn = (id) => this.deleteTask(id);
+      const saveFn = () => {
+         this.#localTaskStorage.save(this.#taskList)
+         this.#updateHtmlTaskList();
+      };
    
       for (const task of this.#taskList) {
          const taskHtmlElement = task.generateHtml(saveFn, deleteFn);

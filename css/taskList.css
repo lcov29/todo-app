@@ -74,12 +74,12 @@ input[type="checkbox"] {
 }
 
 
-.task>input {
+.task > input {
    min-height: 2rem;
 }
 
 
-.task>p {
+.task > p {
    font-weight: bold;
 }
 
@@ -87,4 +87,10 @@ input[type="checkbox"] {
 .task summary {
    font-weight: bold;
    margin-bottom: .2rem;
+}
+
+
+.task-done details,
+.task-done > p {
+   text-decoration: 2px line-through white;
 }
