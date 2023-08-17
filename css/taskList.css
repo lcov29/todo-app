@@ -11,7 +11,7 @@ input[type="checkbox"] {
 }
 
 
-#task-list-control-container>button {
+#task-list-control-container > button {
    background: none;
    border: 1px solid var(--border-color);
    border-radius: .5rem;
@@ -22,7 +22,7 @@ input[type="checkbox"] {
 }
 
 
-#task-list-control-container>button:hover {
+#task-list-control-container > button:hover {
    background-color: var(--dialog-background-color);
 }
 
@@ -40,7 +40,14 @@ input[type="checkbox"] {
 }
 
 
-.task > button {
+.task > div {
+   align-items: center;
+   display: flex;
+   justify-content: center;
+}
+
+
+.task > div > button {
    background-color: rgb(4, 117, 4);
    border-radius: 50%;
    border: none;
@@ -49,23 +56,23 @@ input[type="checkbox"] {
 }
 
 
-.task > .task-priority-1 {
+.task > div > .task-priority-1 {
    background-color: var(--task-priority-1);
 }
 
 
-.task > .task-priority-2 {
+.task > div > .task-priority-2 {
    background-color: var(--task-priority-2);
 }
 
 
-.task > .task-priority-3 {
+.task > div > .task-priority-3 {
    background-color: var(--task-priority-3);
 }
 
 
-.task > button:hover,
-.task > button:focus {
+.task > div > button:hover,
+.task > div > button:focus {
    background-color: var(--task-background-color);
    background-image: url('../icons/delete.svg');
    background-position: center;

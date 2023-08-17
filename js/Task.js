@@ -102,7 +102,10 @@ class Task {
       element.setAttribute('type', 'button');
       element.addEventListener('click', () => deleteFn(this.#id));
       element.classList.add(`task-priority-${this.#priority}`);
-      return element;
+
+      const container = document.createElement('div');
+      container.appendChild(element);
+      return container;
    }
 
 
