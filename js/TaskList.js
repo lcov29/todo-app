@@ -1,4 +1,5 @@
 import { Task } from "./Task.js";
+import { ProgressBar } from "./ProgressBar.js";
 import { LocalTaskStorage } from "./LocalTaskStorage.js";
 
 
@@ -6,6 +7,7 @@ class TaskList {
 
 
    #taskList = [];
+   #progressBar = new ProgressBar();
    #localTaskStorage = new LocalTaskStorage();
    #nextUnassignedTaskId = 1;
    #taskListHtmlContainer = null;
@@ -15,6 +17,7 @@ class TaskList {
       this.#taskList = this.#localTaskStorage.load();
       this.#nextUnassignedTaskId = this.#calculateNextUnassignedTaskId();
       this.#taskListHtmlContainer = document.getElementById('task-list-container');
+      this.#updateHtmlTaskProgressBar();
       this.#updateHtmlTaskList();
    }
 
@@ -28,6 +31,7 @@ class TaskList {
       const task = new Task({ id: this.#nextUnassignedTaskId++, title, description, priority, done: false });
       this.#taskList.push(task);
       this.#localTaskStorage.save(this.#taskList);
+      this.#updateHtmlTaskProgressBar();
       this.#updateHtmlTaskList();
    }
 
@@ -35,6 +39,7 @@ class TaskList {
    deleteTask(id) {
       this.#taskList = this.#taskList.filter((task) => task.id !== id);
       this.#localTaskStorage.save(this.#taskList);
+      this.#updateHtmlTaskProgressBar();
       this.#updateHtmlTaskList();
       this.#resetNextUnassignedTaskId();
    }
@@ -64,19 +69,36 @@ class TaskList {
 
 
    #updateHtmlTaskList() {
-      this.#sortTaskList();
       this.#clearHtmlTaskList();
-
+      
       const deleteFn = (id) => this.deleteTask(id);
       const saveFn = () => {
          this.#localTaskStorage.save(this.#taskList)
+         this.#updateHtmlTaskProgressBar();
          this.#updateHtmlTaskList();
       };
-   
+      
+      this.#sortTaskList();
       for (const task of this.#taskList) {
          const taskHtmlElement = task.generateHtml(saveFn, deleteFn);
          this.#taskListHtmlContainer.appendChild(taskHtmlElement);
       }
+   }
+
+
+   #updateHtmlTaskProgressBar() {
+      let completedTasksAmount = 0;
+      let openTasksAmount = 0;
+
+      for (const task of this.#taskList) {
+         if (task.done) {
+            completedTasksAmount++;
+         } else {
+            openTasksAmount++;
+         }
+      }
+
+      this.#progressBar.display(completedTasksAmount, openTasksAmount);
    }
 
 
