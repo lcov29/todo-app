@@ -44,7 +44,8 @@ The application stores its data in the local storage of your browser. Therefore 
 classDiagram
     direction LR
     class TaskList {
-        -taskList: Task[] 
+        -taskList: Task[]
+        -progressBar: ProgressBar
         -localTaskStorage: LocalTaskStorage 
         -nextUnassignedTaskId: number
         -taskListHtmlContainer: HTMLElement 
@@ -55,6 +56,7 @@ classDiagram
         -calculateNextUnassignedTaskId(): number
         -resetNextUnassignedTaskId()
         -updateHtmlTaskList()
+        -updateHtmlTaskProgressBar()
         -sortTaskList()
         -getPendingTaskListSortedByDescendingPriority(): Task[]
         -getDoneTaskListSortedByDescendingPriority(): Task[]
@@ -73,6 +75,14 @@ classDiagram
         -generateHtmlTaskText(): HTMLElement
         -generateHtmlTaskDeleteButton(deleteFn: function): HTMLElement
     }
+    class ProgressBar {
+        -completedTasksBar: HTMLElement
+        -openTasksBar: HTMLElement
+
+        +display(completedTasksAmount: number, openTasksAmount: number)
+        -updateCompletedTasksBar(completedTasksAmount: number, totalTasksAmount: number)
+        -updateOpenTasksBar(openTasksAmount: number, totalTasksAmount: number)
+    }
     class LocalTaskStorage {
         -localStorageKeyName: string
 
@@ -80,6 +90,7 @@ classDiagram
         +save(taskList: Task[])
     }
     TaskList --> Task
+    TaskList --> ProgressBar
     TaskList --> LocalTaskStorage
 
 
