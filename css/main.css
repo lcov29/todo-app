@@ -37,6 +37,7 @@ body {
 main {
    border: 2px solid var(--border-color);
    border-radius: 1rem;
+   margin: 1rem;
    min-width: 20%;
    padding: 2rem;
 }
