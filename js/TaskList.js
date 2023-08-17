@@ -48,6 +48,7 @@ class TaskList {
    clear() {
       this.#taskList = [];
       this.#localTaskStorage.save(this.#taskList);
+      this.#updateHtmlTaskProgressBar();
       this.#clearHtmlTaskList();
       this.#resetNextUnassignedTaskId();
    }
