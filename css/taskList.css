@@ -41,6 +41,11 @@ input[type="checkbox"] {
 }
 
 
+.task:first-child {
+   margin-top: 0;
+}
+
+
 .task > div {
    align-items: center;
    display: flex;
