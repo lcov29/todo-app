@@ -35,6 +35,7 @@ input[type="checkbox"] {
    display: grid;
    gap: 1rem;
    grid-template-columns: 1fr 5fr 1fr;
+   margin-right: .5rem;
    margin-top: 1.5rem;
    padding: .5rem;
 }
@@ -100,4 +101,20 @@ input[type="checkbox"] {
 .task-done details,
 .task-done > p {
    text-decoration: 2px line-through white;
+}
+
+
+::-webkit-scrollbar {
+   width: .7rem;
+}
+  
+
+::-webkit-scrollbar-thumb {
+   background: var(--scrollbar-main-color); 
+   border-radius: .5rem;
+}
+ 
+
+::-webkit-scrollbar-thumb:hover {
+   background: var(--scrollbar-hover-color); 
 }
