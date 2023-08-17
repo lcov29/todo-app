@@ -93,6 +93,7 @@ input[type="checkbox"] {
 
 .task > p {
    font-weight: bold;
+   word-break: break-all;
 }
 
 
