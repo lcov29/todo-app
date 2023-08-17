@@ -9,7 +9,7 @@ A simple TODO application written with HTML, CSS and vanilla JavaScript.
 
 <br>
 
-![Screenshot](screenshots/Screenshot%20from%202023-08-17%2001-55-34.png)
+![Screenshot](./screenshots/screenshot-todo-app.png)
 
 <br>
 <br>
