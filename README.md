@@ -9,10 +9,6 @@ A simple TODO application written with HTML, CSS and vanilla JavaScript.
 
 <br>
 
-[Live](https://voss29.github.io/todo-app/)
-
-<br>
-
 ![Screenshot](./screenshots/screenshot-todo-app.png)
 
 <br>
